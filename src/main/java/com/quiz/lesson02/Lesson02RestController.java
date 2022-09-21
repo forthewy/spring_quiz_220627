@@ -15,9 +15,10 @@ public class Lesson02RestController {
 	@Autowired
 	private StoreBO storeBO;
 	
+	// input 없음
 	@RequestMapping("/lesson02/quiz01")
 	public List<Store> quiz01() {
-		List<Store> storeList = storeBO.getStoreList();
+		List<Store> storeList = storeBO.getStoreList(); // 객체 => json
 		return storeList;
 	}
 }

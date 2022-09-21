@@ -8,6 +8,6 @@ import com.quiz.lesson02.model.Store;
 
 @Repository
 public interface StoreDAO {
-	public List<Store> selectStoreList();
+	public List<Store> selectStoreList(); // DB와 가깝다..
 	
 }

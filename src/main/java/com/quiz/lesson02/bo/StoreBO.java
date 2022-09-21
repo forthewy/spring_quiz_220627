@@ -10,10 +10,13 @@ import com.quiz.lesson02.model.Store;
 
 @Service
 public class StoreBO {
+	
+	//DI(Dependency Injection) 의존성 주입
 	@Autowired
 	private StoreDAO storeDAO;
 	
-	public List<Store> getStoreList() {
+	// input: X output:List<Store>
+	public List<Store> getStoreList() { // select일때 관례적으로 get 사용
 		return storeDAO.selectStoreList();
 	}
 }
