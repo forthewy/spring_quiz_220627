@@ -27,4 +27,17 @@ public class RealEstateBO {
 	public List<RealEstate> getRealEstateListByAreaAndPrice(int area, int price) {
 		return realEstateDAO.SelectRealEstateListByAreaAndPrice(area, price);
 	}
+	
+	public int addRealEstate(RealEstate realEstate) {
+		return realEstateDAO.InsertRealEstate(realEstate);
+	}
+	
+	//"썅떼빌리버 오피스텔 814호", 45 , "월세", 100000, 120) // BO 입장을 생각해서 Integer로 할지 고려한다.
+	public int addRealEstateAsField(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
+		return realEstateDAO.InsertRealEstateAsField(realtorId, address,  area, type, price, rentPrice);
+	}
+	
+	public int updateRealEstateById(int id, String type, int price) {
+		return realEstateDAO.updateRealEstateById(id, type, price);
+	}
 }
