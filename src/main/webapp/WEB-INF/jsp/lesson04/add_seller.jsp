@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1><b>판매자 추가</h1>
+		<h1><b>판매자 추가</b></h1>
 		<form method="post" action="/lesson04/quiz01/add_seller">
 			<div class="form-group">
 				<label for="nickname">닉네임</label>

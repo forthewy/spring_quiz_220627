@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,12 +18,12 @@ public class Lesson04Quiz01Controller {
 	private SellerBO sellerBO;
 	
 	//http://localhost/lesson04/quiz01/1
-	@RequestMapping("1")
+	@GetMapping("add_seller_view")
 	public String addSellerView() {
 		return "/lesson04/add_seller";
 	}
 	
-	@RequestMapping("add_seller")
+	@PostMapping("add_seller") // @PostMapping 꼭 post로 받겠다.
 	public String addSeller(
 			@RequestParam("nickname") String nickname,
 			@RequestParam(value="profileImageUrl", required=false) String profileImageUrl,
@@ -33,8 +34,8 @@ public class Lesson04Quiz01Controller {
 		return "/lesson04/after_add_seller";
 	}
 	
-	@GetMapping("seller_info")
-	public String getLastSeller(
+	@GetMapping("seller_info_view")
+	public String sellerInfoView(
 			@RequestParam(value="id", required=false) Integer id,
 			Model model){
 		
@@ -42,7 +43,7 @@ public class Lesson04Quiz01Controller {
 		if (id == null) {
 			seller = sellerBO.getLastSeller();
 		} else {
-			seller = sellerBO.getSeller(id);
+			seller = sellerBO.getSellerById(id);
 		}
 			model.addAttribute("result", seller);
 			model.addAttribute("subject", "판매자 정보");

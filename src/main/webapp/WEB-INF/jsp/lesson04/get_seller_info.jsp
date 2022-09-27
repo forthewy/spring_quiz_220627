@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<h3><b>${subject}</b></h3>
-		<img src=${result.profileImageUrl} width="200px">
+		<img src="${result.profileImageUrl}" alt="판매자 사진" width="200px">
 		<h2>${result.nickname}</h2>
 		<h3 class="text-warning">${result.temperature}</h3>
 	</div>
