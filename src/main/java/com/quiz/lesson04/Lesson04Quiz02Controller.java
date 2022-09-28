@@ -24,12 +24,12 @@ public class Lesson04Quiz02Controller {
 	
 	@PostMapping("/add_realtor")
 	public String addRealtor(
-			@ModelAttribute Realtor realtor,
+			@ModelAttribute Realtor realtor, // 
 			Model model) {
 		
 		realtorBO.addRealtor(realtor);
 		Realtor currentRealtor = realtorBO.getRealtorById(realtor.getId());
-		
+		// 담아두면 디버그시 확인하기 좋다.
 		model.addAttribute("realtor", currentRealtor);
 		model.addAttribute("subject", "공인중개사 정보");
 		return "lesson04/afterAddRealtor";
