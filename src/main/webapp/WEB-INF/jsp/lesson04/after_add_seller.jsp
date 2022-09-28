@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
 </head>
 <body>
 	<h1>입력 성공!</h1>
