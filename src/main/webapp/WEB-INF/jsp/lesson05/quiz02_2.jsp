@@ -26,7 +26,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${membership}" var="member" varStatus="status">
-					<tr>
+					<tr> <%-- 안쓰는 경우 생략해도 된다 --%>
 						<td>${member.name}</td>
 						<td>${member.phoneNumber}</td>
 						<c:choose>
