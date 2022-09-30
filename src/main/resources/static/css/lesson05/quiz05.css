@@ -1,0 +1,19 @@
+@charset "UTF-8";
+#navContents {
+	height:500px;
+}
+a:hover{
+	text-decoration:none;
+	color: white;
+}
+a:link {
+	text-decoration:none;
+	color: white;
+}
+a:active {
+	text-decoration:none;
+	color: white;
+}
+footer {
+	height:50px;
+}
