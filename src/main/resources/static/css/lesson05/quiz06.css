@@ -1,0 +1,14 @@
+@charset "UTF-8";
+header {
+	height: 100px;
+}
+.store-list {
+	border-radius: 10px;
+}
+a {
+	text-decoration:none;
+	color: black;
+}
+.userName {
+	font-size: 25px;
+}

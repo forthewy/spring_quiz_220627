@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Store {
 	private int id;
-	private String store;
+	private String name;
 	private String phoneNumber;
 	private String address;
 	private String businessNumber;
@@ -17,11 +17,11 @@ public class Store {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getStore() {
-		return store;
+	public String getName() {
+		return name;
 	}
-	public void setStore(String store) {
-		this.store = store;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;

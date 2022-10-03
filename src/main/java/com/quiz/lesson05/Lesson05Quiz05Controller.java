@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.quiz.lesson05.bo.WeatherHistoryBO;
@@ -29,5 +30,12 @@ public class Lesson05Quiz05Controller {
 	@GetMapping("/quiz05/add_weather_view")
 	public String addWeatherView() {
 		return "lesson05/quiz05_2";
+	}
+	
+	@PostMapping("/quiz05/after_add_weather")
+	public String afterAddWeather(WeatherHistory weatherHistory) {
+		weatherHistoryBO.addWeatherHistory(weatherHistory);
+		
+		return "redirect:show_weather_view";
 	}
 }

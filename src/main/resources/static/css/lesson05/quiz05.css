@@ -1,19 +1,25 @@
 @charset "UTF-8";
+label {
+	margin-bottom: 0;
+	margin-right: 10px;
+	margin-left: 10px;
+	width:70px;
+}
 #navContents {
-	height:500px;
+	height:auto;
 }
-a:hover{
-	text-decoration:none;
+nav > img {
+	width: 100%
+}
+ul > li:hover {
+	background-color: #84cbfb;
 	color: white;
 }
-a:link {
-	text-decoration:none;
-	color: white;
-}
-a:active {
+a {
 	text-decoration:none;
 	color: white;
 }
 footer {
 	height:50px;
+	font-size: 13px;
 }
