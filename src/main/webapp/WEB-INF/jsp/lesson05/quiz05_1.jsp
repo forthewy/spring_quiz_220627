@@ -44,8 +44,7 @@
 						<c:forEach items="${weatherHistory}" var="weather">
 							<tr>
 								<td>
-									<fmt:parseDate var="date" value="${weather.date}" pattern="yyyy-MM-dd"/>
-									<fmt:formatDate value="${date}" pattern="yyyy년 M월 d일"/>
+									<fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 d일"/>
 								</td>
 								<td>
 									<c:set var="weatherName">
@@ -61,7 +60,7 @@
 											</c:when>
 											<c:when test="${weather.weather eq '비'}">
 												rainy
-											</c:when>									
+											</c:when> <%-- otherwise로 예외 처리를 해줘서 최대한 오류 화면 안보게 해주는 게 좋다. --%>
 										</c:choose>
 									</c:set>
 									<img src="/img/${weatherName}.jpg" alt="날씨 그림">

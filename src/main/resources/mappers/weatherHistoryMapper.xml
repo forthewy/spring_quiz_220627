@@ -4,7 +4,8 @@
  <mapper namespace="com.quiz.lesson05.dao.WeatherHistoryDAO">
  	<select id="selectAllWeatherHistory" resultType="com.quiz.lesson05.model.WeatherHistory">
  		SELECT
- 			`date`
+ 			`id`
+ 			,`date`
 			,`weather`
 			,`temperatures`
 			,`precipitation`
@@ -15,7 +16,7 @@
  		FROM 
  			`weather_history`
  	</select>
- 	<insert id="insertWeatherHistory" parameterType="com.quiz.lesson05.model.WeatherHistory">
+ 	<insert id="insertWeatherHistory" parameterType="map">
  		INSERT INTO
  			`weather_history`
  		(

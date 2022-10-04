@@ -104,7 +104,7 @@
 			</div>
 		</footer>
 	</div>
-	<script>
+	<script> <%-- 스크립트 추가시 console 창 보기 --%>
 		$(document).ready(function(){
 			$.datepicker.setDefaults({
 				dateFormat: 'yy-mm-dd'
