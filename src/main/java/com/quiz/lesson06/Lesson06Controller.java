@@ -1,6 +1,8 @@
 package com.quiz.lesson06;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,14 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.quiz.lesson06.bo.FavoriteBO;
 import com.quiz.lesson06.model.Favorite;
 
-@RequestMapping("/lesson06/quiz01")
+@RequestMapping("/lesson06")
 @Controller
 public class Lesson06Controller {
 	
 	@Autowired
 	private FavoriteBO favoriteBO;
 	
-	@RequestMapping("/add_favorite_view")
+	@RequestMapping("/quiz01/add_favorite_view")
 	public String addFavorite() {
 		
 		return "lesson06/addFavorite";
@@ -28,7 +30,7 @@ public class Lesson06Controller {
 	
 	// AJAX가 호출하는 API => @ResponseBody 있어야함
 	@ResponseBody
-	@PostMapping("/add_favorite")
+	@PostMapping("/quiz01/add_favorite")
 	public String addFavorite(
 			@RequestParam("name") String name,
 			@RequestParam("url") String url) {
@@ -37,7 +39,7 @@ public class Lesson06Controller {
 		return "success";
 	}
 	
-	@RequestMapping("/get_favorite_view")
+	@RequestMapping("/quiz01/get_favorite_view")
 	public String getFavoriteView(Model model) {
 		List<Favorite> favors = favoriteBO.getFavorite();
 		model.addAttribute("favors", favors);
@@ -45,4 +47,18 @@ public class Lesson06Controller {
 		return "lesson06/favoriteList";
 	}
 	
+	@PostMapping("/quiz02/duplicate_check")
+	@ResponseBody
+	public Map<String, Boolean> duplicateCheck(
+			@RequestParam("url") String url) {
+		
+		Map<String, Boolean> result = new HashMap<>();
+		Favorite favorite = favoriteBO.getFavoriteByUrl(url);
+		if (favorite == null) {
+			result.put("is_duplicate", false);
+		} else {
+			result.put("is_duplicate", true);
+		}
+		return result;
+	}
 }

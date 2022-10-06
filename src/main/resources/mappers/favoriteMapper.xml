@@ -29,4 +29,16 @@
 		FROM
 			`favorite`
 	</select>
+	<select id="selectFavoriteByUrl" parameterType="string" resultType="boolean">
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`favorite`
+		WHERE
+			`url` = #{url}
+	</select>
 </mapper>

@@ -32,10 +32,19 @@
 						<td>${favor.id}</td>
 						<td>${favor.name}</td>
 						<td>${favor.url}</td>
+						<td><button type="button" class="deleteBtn btn btn-danger">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<script>
+		$(document).ready(function() {
+			// alert("zzzzz");
+			$('.deleteBtn').on('click', function() {
+				alert($('.deleteBtn').parent());
+			});
+		});
+	</script>
 </body>
 </html>
