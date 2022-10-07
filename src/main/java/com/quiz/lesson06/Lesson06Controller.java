@@ -36,7 +36,7 @@ public class Lesson06Controller {
 			@RequestParam("url") String url) {
 		
 		favoriteBO.addFavorite(name, url);
-		return "success";
+		return "성공";
 	}
 	
 	@RequestMapping("/quiz01/get_favorite_view")
@@ -46,6 +46,7 @@ public class Lesson06Controller {
 		
 		return "lesson06/favoriteList";
 	}
+	
 	
 	@PostMapping("/quiz02/duplicate_check")
 	@ResponseBody
@@ -60,5 +61,15 @@ public class Lesson06Controller {
 			result.put("is_duplicate", true);
 		}
 		return result;
+	}
+	
+	@ResponseBody
+	@PostMapping("/quiz02/delete_favorite")
+	public String deleteFavorite(
+			@RequestParam("btnId") int btnId) {
+		
+		favoriteBO.deleteFavoriteByBtnId(btnId);
+		
+		return "성공";
 	}
 }

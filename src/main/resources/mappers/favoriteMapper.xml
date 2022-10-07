@@ -29,7 +29,7 @@
 		FROM
 			`favorite`
 	</select>
-	<select id="selectFavoriteByUrl" parameterType="string" resultType="boolean">
+	<select id="selectFavoriteByUrl" parameterType="string" resultType="com.quiz.lesson06.model.Favorite">
 		SELECT
 			`id`
 			,`name`
@@ -41,4 +41,10 @@
 		WHERE
 			`url` = #{url}
 	</select>
+	<delete id="deleteFavoriteByBtnId" parameterType="int">
+		DELETE
+		FROM `favorite`
+		WHERE 
+			`id` = #{btnId}
+	</delete>
 </mapper>

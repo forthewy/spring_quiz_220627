@@ -24,16 +24,20 @@
 	<div class="container">
 		<h1>즐겨찾기 추가하기</h1>
 		<div method="post" action="lesson06/quiz01/add_favorite">
-			<label for="name">제목</label>
-			<%-- 이제 name은 필요 없음 --%>
-			<input type="text" id="name" class="form-control">
-			<label for="url">주소</label>
-			<div class="d-flex">
-				<input type="text" id="url" class="form-control">
-				<button type="button" id="addressCheckBtn" class="btn btn-info ml-3">중복 확인</button>
+			<div class="form-group">
+				<label for="name">제목</label>
+				<input type="text" id="name" class="form-control">
 			</div>
-			<small id="isDuplicationText" class="text-danger d-none">중복된 주소입니다</small>
-			<small id="availableText" class="text-success d-none">저장가능한 주소입니다</small>
+			<%-- 이제 name은 필요 없음 --%>
+			<div class="form-group">
+				<label for="url">주소</label>
+				<div class="d-flex">
+					<input type="text" id="url" class="form-control">
+					<button type="button" id="addressCheckBtn" class="btn btn-info ml-3">중복 확인</button>
+				</div>
+				<small id="isDuplicationText" class="text-danger d-none">중복된 주소입니다</small>
+				<small id="availableText" class="text-success d-none">저장가능한 주소입니다</small>
+			</div>
 			<button type="button" id="addBtn" class="btn btn-success form-control mt-3">추가</button>
 		</div>
 	</div>
@@ -41,6 +45,7 @@
 		$(document).ready(function() {
 			$('#addBtn').on('click', function(e) {
 				//alert('안녕하세요');
+				e.preventDefault();
 				let name = $('#name').val().trim();
 				if (name.length < 1) {
 					alert("제목을 입력하세요");
@@ -58,10 +63,10 @@
 					return;
 				}
 				
-				if (!url.startsWith('https') && !url.startsWith('http')) {
-					alert("주소형식이 잘못되었습니다");
-					return;
-				}
+				//if (!url.startsWith('https') && !url.startsWith('http')) {
+				//	alert("주소형식이 잘못되었습니다");
+				//	return;
+				//}
 				<%-- ajax 는 늘 url을 api를 써야함. 뷰로 할수 없음.. AJAX를 관제시스템으로 본다 --%>
 				<%-- 절대주소는 꼭 앞에 / 써주기!!!! --%>
 				$.ajax({
@@ -72,7 +77,7 @@
 				
 					// responsse 
 					, success: function(data) {	// data 파라미터는 요청에 대한 응답값이다.
-							if (data == "success") {
+							if (data == "성공") {
 								location.href = "/lesson06/quiz01/get_favorite_view";
 							} else {
 								alert("입력 실패");
@@ -91,6 +96,7 @@
 				// url 중복확인
 				if(url == "") {
 					alert('확인할 url을 입력하세요');
+					return;
 				}
 				
 				// 중복검사 db
@@ -106,7 +112,6 @@
 							//중복
 							$('#isDuplicationText').removeClass('d-none');
 							$('#availableText').addClass('d-none');
-							return;
 						} else {
 							// 사용가능
 							$('#availableText').removeClass('d-none');
@@ -114,7 +119,7 @@
 						}
 					}
 					,error:function(e) {
-						alert("중복확인에 실패했습니다. 관리자에게 문의해주세요" + e);
+						alert("중복확인에 실패했습니다. 관리자에게 문의해주세요");
 					}
 				});
 			});
