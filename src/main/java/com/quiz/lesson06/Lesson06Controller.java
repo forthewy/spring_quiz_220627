@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,13 +64,24 @@ public class Lesson06Controller {
 		return result;
 	}
 	
+	
+	// AJAX 가 호출 -> ResponseBody 가 있어야 한다.
 	@ResponseBody
-	@PostMapping("/quiz02/delete_favorite")
-	public String deleteFavorite(
+	@DeleteMapping("/quiz02/delete_favorite")
+	public Map<String, Object> deleteFavorite(
 			@RequestParam("btnId") int btnId) {
 		
-		favoriteBO.deleteFavoriteByBtnId(btnId);
+		Map<String, Object> result = new HashMap<>();
 		
-		return "성공";
+		int deleteRow = favoriteBO.deleteFavoriteByBtnId(btnId);
+		if (deleteRow > 0) {
+			result.put("code", 100); // 100 이면 성공 => 서버가 지정
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500); // 500 이면 실패 => 서버가 지정
+			result.put("errorMessage", "삭제하는 데 실패하였습니다.");
+		}
+		
+		return result;
 	}
 }

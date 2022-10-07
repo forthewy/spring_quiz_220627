@@ -30,7 +30,7 @@ public class FavoriteBO {
 		return favoriteList.get(0); // 중복이면 첫번째 데이터를 리턴한다.  
 	}
 	
-	public void deleteFavoriteByBtnId(int btnId) {
-		favoriteDAO.deleteFavoriteByBtnId(btnId);
+	public int deleteFavoriteByBtnId(int btnId) {
+		return favoriteDAO.deleteFavoriteByBtnId(btnId);
 	}
 }
