@@ -70,9 +70,14 @@
 									<c:when test="${state eq '확정'}">
 										<span class="text-success">${state}</span>
 									</c:when>
+									<c:when test="${state eq '취소'}">
+										<span class="text-danger">${state}</span>
+									</c:when>
 								</c:choose>
 							</td>
-							<td><button type="button" class="del-btn btn btn-danger" data-booking-id="${booking.id}">삭제</button></td>
+							<td>
+								<button type="button" class="del-btn btn btn-danger" data-booking-id="${booking.id}">삭제</button>
+							</td>
 						</tr>									
 					</c:forEach>
 				</tbody>
@@ -93,9 +98,12 @@
 				let bookingId = $(this).data('booking-id');
 				
 				$.ajax({
+					// request
 					type:"DELETE"
 					,url:"/lesson06/quiz03/delete_booking"
 					,data:{"id":bookingId}
+				
+					// response			
 					,success:function(data) {
 						if (data.response == 200) {
 							location.reload(true);

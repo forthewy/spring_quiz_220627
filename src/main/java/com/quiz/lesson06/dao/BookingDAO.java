@@ -22,7 +22,7 @@ public interface BookingDAO {
 			@Param("phoneNumber") String phoneNumber, 
 			@Param("state") String state);
 	
-	public Booking selectBookingByNameAndPhoneNum(
+	public List<Booking> selectBookingByNameAndPhoneNum(
 			@Param("name") String name, 
 			@Param("phoneNumber") String phoneNumber);
 

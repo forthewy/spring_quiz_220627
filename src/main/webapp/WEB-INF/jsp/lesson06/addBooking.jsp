@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!--  jquery : ajax, datepicker, bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -80,6 +81,11 @@
 				dateFormat: 'yy-mm-dd'
 			});
 			$('#date').datepicker();
+			// $('input[name=date]').datepicker({
+			// 		dateFormat: 'yy-mm-dd'
+			//		, mindate: 0 //오늘보다 뒤 선택
+			//}) ;
+			//<== 만약 date input 에 name="date"를 넣었다면.
 			
 			$('#phoneNumber').on('blur', function(e) {
 				$('#phoneNumber').val($('#phoneNumber').val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-"));

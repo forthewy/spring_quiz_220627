@@ -91,7 +91,7 @@
 			setInterval(function() {
 				$('#bannerImg').attr('src', '/img/test06_' + imgArr[index]);
 				index++;
-				if (index == imgArr.length){
+				if (index == imgArr.length){ // 안전하게 쓰기 위해 <= 로 쓴다.
 					index = 0;
 				}
 			}, 2000);
@@ -116,12 +116,22 @@
 					, url:"/lesson06/quiz03/searchReserve"
 					, success:function(data) {
 						if (data.code == 200) {
+							 for (let i = 0; i < data.booking.length; i++) {
+								 alert("이름: " + data.booking[i].name 
+										 + "\n날짜: " + data.booking[i].date.substring(0,10) // JSON에서 잘담아가도록 properties에 설정해주기
+										 + "\n일수: " + data.booking[i].day
+										 + "\n인원: " + data.booking[i].headcount
+										 + "\n상태: " + data.booking[i].state 
+										);
+							 }
+							
+							/* 
 							alert("이름: " + data.booking.name
 								+ "\n날짜: " + (data.booking.date).substring(0,10)
 								+ "\n일수: " + data.booking.day
 								+ "\n인원: " + data.booking.headcount
-								+ "\n상태: " + data.booking.state
-							);
+								+ "\n상태: " + data.booking.state 
+							);*/
 						} else {
 							alert(data.errorMessage);
 						}
