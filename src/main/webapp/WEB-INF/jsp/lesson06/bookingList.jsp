@@ -21,16 +21,16 @@
 		<header class="text-center pt-3">
 			<h1>통나무 팬션</h1>
 		</header>
-		<nav class="bg-warning">
+		<nav class="bg-lightbrown">
 			<ul class="nav nav-fill">
 				<li class="nav-item">
-					<a class="nav-link" href="#">팬션 소개</a>
+					<a class="nav-link" href="/lesson06/quiz03/3">팬션 소개</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">객실 보기</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">예약하기</a>
+					<a class="nav-link" href="/lesson06/quiz03/2">예약하기</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/lesson06/quiz03/1">예약목록</a>
@@ -56,8 +56,7 @@
 						<tr>
 							<td>${booking.name}</td>
 							<td>
-								<fmt:parseDate var="date" value="${booking.date}" pattern="yyyy-MM-dd"/>
-								<fmt:formatDate value="${date}" pattern="yyyy년 M월 d일"/>
+								<fmt:formatDate value="${booking.date}" pattern="yyyy년 M월 d일"/>
 							</td>
 							<td>${booking.day}</td>
 							<td>${booking.headcount}</td>

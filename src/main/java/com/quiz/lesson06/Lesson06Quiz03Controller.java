@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quiz.lesson06.bo.BookingBO;
@@ -46,5 +49,57 @@ public class Lesson06Quiz03Controller {
 	}
 	
 	@RequestMapping("/2")
-	public String 
+	public String reserveView() {
+		return "lesson06/addBooking";
+	}
+	
+	@ResponseBody
+	@PostMapping("/add_booking")
+	public Map<String, Object> addBooking(
+			@RequestParam("name") String name,
+			@RequestParam("date") String date,
+			@RequestParam("day") int day,
+			@RequestParam("headcount") int headcount,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam(value="state", defaultValue="대기중") String state
+			){
+		Map<String, Object> result = new HashMap<>();
+
+		int addRow = bookingBO.addBooking(name, date, day, headcount, phoneNumber, state);
+		
+		if (addRow > 0) {
+			result.put("code", 200);
+			result.put("message", "예약성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "예약등록에 실패하였습니다. 문의주세요");
+		}
+		return result;
+	}
+	
+	@GetMapping("/3")
+	public String getMain() {
+		return "lesson06/bookingMain";
+	}
+	
+	@GetMapping("/searchReserve")
+	@ResponseBody
+	public Map<String, Object> searchReserve(
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber){
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		Booking booking = bookingBO.getBookingByNameAndPhoneNum(name, phoneNumber);
+		if (booking == null) {
+			result.put("code", 500);
+			result.put("errorMessage", "조회 결과가 없습니다");
+		} else {
+			result.put("code", 200);
+			result.put("booking", booking);
+		}
+		
+		return result;
+	}
+	
 }

@@ -10,6 +10,21 @@ nav > ul > li > a {
 	color:white;
 	font-weight: bold;
 }
+.bg-lightbrown {
+	background-color: #c08383;
+}
+.banner {
+	height:300px;
+}
+.bg-brown {
+	background-color: #804040;
+}
+.info {
+	height:250px;
+}
+.info-text {
+	padding:10%;
+}
 section {
 	height:auto;
 }
